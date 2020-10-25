@@ -5,6 +5,8 @@ namespace App\Entity;
 use App\Repository\PropertyRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Cocur\Slugify\Slugify;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * @ORM\Entity(repositoryClass=PropertyRepository::class)
@@ -36,26 +38,31 @@ class Property
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\Range(min=10, max=400)
      */
     private $surface;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\Range(min=0, max=10)
      */
     private $rooms;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\Range(min=0, max=10)
      */
     private $bedrooms;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\Range(min=0, max=10)
      */
     private $floor;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\Range(min=0)
      */
     private $price;
 
@@ -76,6 +83,7 @@ class Property
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Regex("/^[0-9]{5}$/")
      */
     private $postal_code;
 
