@@ -25,10 +25,10 @@ class PropertyRepository extends ServiceEntityRepository
      */
     public function findAllVisibleQuery ($search)
     {
-        return $this->createQueryBuilder('s')
-        ->andwhere('s.price <= :maxprice')
+        return $this->createQueryBuilder('p')
+        ->andwhere('p.price <= :maxprice')
         ->setParameter('maxprice', $search->getMaxPrice() )
-        ->andwhere('s.surface >= :minsurface')
+        ->andwhere('p.surface >= :minsurface')
         ->setParameter('minsurface', $search->getMinSurface() );
 
     }

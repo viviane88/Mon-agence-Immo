@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\PropertySearchRepository;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -29,6 +30,16 @@ class PropertySearch
      */
     private $minSurface;
 
+    /**
+     * @var ArrayCollection
+     */
+    private $options;
+
+    public function __construct()
+    {
+        $this->options = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -54,6 +65,19 @@ class PropertySearch
     public function setMinSurface(?int $minSurface): self
     {
         $this->minSurface = $minSurface;
+
+        return $this;
+    }
+
+
+    public function getOptions(): ArrayCollection
+    {
+        return $this->options;
+    }
+
+    public function setOptions(ArrayCollection $options): self
+    {
+        $this->options = $options;
 
         return $this;
     }
